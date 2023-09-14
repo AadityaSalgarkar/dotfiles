@@ -99,23 +99,29 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 #
 #
+date_time=$(date +"%Y-%m-%d %H:%M:%S")
+
+alias showtime='echo $(date +"%Y-%m-%d %H:%M:%S")'
+
 alias coindecide='if (( RANDOM % 2 == 0 )); then echo Yes; else echo No; fi' 
 alias zshconfig="mate ~/.zshrc"
+alias reload="source ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-alias dogit="git add . |  git commit -m "quick checkout" |  git push origin master"
+alias dogit="git add . |  git commit -m "$date_time" |  git push origin master"
 alias sss="vim ~/Dropbox/setup\ files/setup2.sh"
-echo ".cfg" >> .gitignore
 
 alias i='sudo apt-get install -y'
+# convert from ipynb to md
+alias tomd='jupyter nbconvert --to markdown --NbconvertApp.output_files_dir=. $1'
 
 alias c='clear'
-alias l='ls -lahN'
+alias l='ls -lah'
 alias h='history'
 alias copy='xclip -selection clipboard -i'
 alias expand='bash ~/tools/bash/acexpand.sh'
 
-alias p='python3.8'
+alias p='python3.10'
 
 alias n='bash ~/notes/noting.sh'
 alias reload='source ~/.zshrc'
@@ -133,7 +139,7 @@ alias comp='g++ -std=c++17 -DLOCAL -I ~/tools/atcoder/library/ac-library/'
 alias fdr='bash ~/tools/bash/folder.sh'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 bindkey -v
-
+alias ccat='highlight -O xterm256 --force -l'
 
 extract () {
         if [ -f $1 ] ; then
@@ -175,6 +181,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-
-
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
+alias ci='gitlab-ci-local'
+alias mydiff='git diff --check --dirstat --find-copies --find-renames --histogram --color'
