@@ -1,7 +1,20 @@
+"  Don't try to be vi compatible
 set nocompatible
-
+" Helps force plugins to load correctly when it is turned back on below.
 filetype off
+"let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+"if empty(glob(data_dir . '/autoload/plug.vim'))
+"  silent exelute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
 
+"" Install vim-plug if not found
+"if empty(glob('~/.vim/autoload/plug.vim'))
+"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"endif
+"
+" Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
@@ -97,6 +110,7 @@ set background=dark
 " in ~/.vim/colors/ and uncomment:
 colorscheme gruvbox
 let g:gruvbox_contrast = 'hard'
+
 
 "ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -210,21 +224,3 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 
 " paste to cliboard
 vnoremap <C-C> :w !xclip -i -sel c<CR><CR>
-" hjkl remap
-function! Swaphjkl()
-  if exists("g:swaphjkl_active") && g:swaphjkl_active == 1
-    unmap h
-    unmap j
-    unmap k
-    unmap l
-    let g:swaphjkl_active = 0
-  else
-    map h <nop>
-    map j <nop>
-    map k <nop>
-    map l <nop>
-    let g:swaphjkl_active = 1
-  endif
-endfunction
-
-command! Swaphjkl :call Swaphjkl()
