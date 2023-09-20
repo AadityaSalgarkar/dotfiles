@@ -180,6 +180,4 @@ export PATH="$HOME/gems/bin:$PATH"
 alias ci='gitlab-ci-local'
 alias mydiff='git diff --check --dirstat --find-copies --find-renames --histogram --color'
 alias topdf='jupyter nbconvert --to pdf --NbconvertApp.output_files_dir=. $1'
-
-
-
+alias cat="highlight -O ansi --force"
