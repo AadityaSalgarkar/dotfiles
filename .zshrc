@@ -105,7 +105,6 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias dogit="git add . |  git commit -m "quick checkout" |  git push origin master"
 alias sss="vim ~/Dropbox/setup\ files/setup2.sh"
-echo ".cfg" >> .gitignore
 
 alias i='sudo apt-get install -y'
 
@@ -180,4 +179,9 @@ export PATH="$HOME/gems/bin:$PATH"
 alias ci='gitlab-ci-local'
 alias mydiff='git diff --check --dirstat --find-copies --find-renames --histogram --color'
 alias topdf='jupyter nbconvert --to pdf --NbconvertApp.output_files_dir=. $1'
-alias cat="highlight -O ansi --force"
+custom_cat() {
+  highlight -O ansi --force -n "$1" | less -R
+}
+
+alias cat="custom_cat"
+
