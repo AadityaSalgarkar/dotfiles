@@ -1,0 +1,85 @@
+{
+  "version": 2,
+  "plugins": {
+    "frontend-design@claude-code-plugins": [
+      {
+        "scope": "user",
+        "installPath": "/Users/aaditya/.claude/plugins/cache/claude-code-plugins/frontend-design/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-14T11:14:58.918Z",
+        "lastUpdated": "2025-12-14T11:14:58.918Z",
+        "gitCommitSha": "eb872450105745e9489c6f6d73fa2fb4ff5a1e9a"
+      }
+    ],
+    "model-trainer@huggingface-skills": [
+      {
+        "scope": "user",
+        "installPath": "/Users/aaditya/.claude/plugins/cache/huggingface-skills/model-trainer/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-14T11:14:58.918Z",
+        "lastUpdated": "2025-12-14T11:14:58.918Z",
+        "gitCommitSha": "d801b3df267122706ac737bf78cb7291a9d3adf5"
+      }
+    ],
+    "hugging-face-dataset-creator@huggingface-skills": [
+      {
+        "scope": "user",
+        "installPath": "/Users/aaditya/.claude/plugins/cache/huggingface-skills/hugging-face-dataset-creator/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-14T11:14:58.918Z",
+        "lastUpdated": "2025-12-14T11:14:58.918Z",
+        "gitCommitSha": "d801b3df267122706ac737bf78cb7291a9d3adf5"
+      }
+    ],
+    "hugging-face-paper-publisher@huggingface-skills": [
+      {
+        "scope": "user",
+        "installPath": "/Users/aaditya/.claude/plugins/cache/huggingface-skills/hugging-face-paper-publisher/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2025-12-14T11:14:58.918Z",
+        "lastUpdated": "2025-12-14T11:14:58.918Z",
+        "gitCommitSha": "d801b3df267122706ac737bf78cb7291a9d3adf5"
+      }
+    ],
+    "hugging-face-evaluation-manager@huggingface-skills": [
+      {
+        "scope": "user",
+        "installPath": "/Users/aaditya/.claude/plugins/cache/huggingface-skills/hugging-face-evaluation-manager/1.3.0",
+        "version": "1.3.0",
+        "installedAt": "2025-12-14T11:14:58.918Z",
+        "lastUpdated": "2025-12-14T11:14:58.918Z",
+        "gitCommitSha": "d801b3df267122706ac737bf78cb7291a9d3adf5"
+      }
+    ],
+    "tmux-cli@cctools-plugins": [
+      {
+        "scope": "user",
+        "installPath": "/Users/aaditya/.claude/plugins/cache/cctools-plugins/tmux-cli/0.1.0",
+        "version": "0.1.0",
+        "installedAt": "2026-01-03T08:14:41.384Z",
+        "lastUpdated": "2026-01-03T08:14:41.384Z",
+        "gitCommitSha": "993adc80c565ef814db72c933ee29a5fd340d4b8"
+      }
+    ],
+    "hugging-face-model-trainer@huggingface-skills": [
+      {
+        "scope": "user",
+        "installPath": "/Users/aaditya/.claude/plugins/cache/huggingface-skills/hugging-face-model-trainer/unknown",
+        "version": "unknown",
+        "installedAt": "2026-01-09T13:06:52.848Z",
+        "lastUpdated": "2026-01-09T13:06:52.848Z",
+        "gitCommitSha": "993adc80c565ef814db72c933ee29a5fd340d4b8"
+      }
+    ],
+    "clangd-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/aaditya/.claude/plugins/cache/claude-plugins-official/clangd-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-01-10T06:44:07.141Z",
+        "lastUpdated": "2026-01-10T06:44:07.141Z",
+        "gitCommitSha": "993adc80c565ef814db72c933ee29a5fd340d4b8"
+      }
+    ]
+  }
+}

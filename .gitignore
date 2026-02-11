@@ -1,0 +1,52 @@
+# Bare repo itself
+.dotfiles
+
+# Sensitive
+.ssh/
+.netrc
+.zsh_history
+.zsh_secrets
+.gitconfig
+
+# OS
+.DS_Store
+
+# Toolchain dirs (too large)
+.cargo/
+.rustup/
+.npm/
+.conda/
+
+# Zed noise
+.config/zed/conversations/
+.config/zed/prompts/
+
+# Repos with their own git
+.oh-my-zsh/
+.emacs.d/
+.tmux/
+
+# .claude/ runtime (track config only)
+.claude/.gitignore
+.claude/xjdr.md
+.claude/debug/
+.claude/file-history/
+.claude/history.jsonl
+.claude/plans/
+.claude/projects/
+.claude/session-env/
+.claude/shell-snapshots/
+.claude/todos/
+.claude/tasks/
+.claude/paste-cache/
+.claude/cache/
+.claude/stats-cache.json
+.claude/statsig/
+.claude/ide/
+.claude/doctor_log.txt
+.claude/.DS_Store
+.claude/plugins/cache/
+.claude/plugins/repos/
+.claude/plugins/marketplaces/
+.claude/plugins/install-counts-cache.json
+.claude/plugins/known_marketplaces.json

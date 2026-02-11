@@ -39,9 +39,9 @@ This function should only modify configuration layer settings."
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      (unicode-fonts :variables
-                   )
-     
-     ;; yasnippet 
+                    )
+
+     ;; yasnippet
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-return-key-behavior 'complete
@@ -51,7 +51,7 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-snippets-in-popup t)
 
      pdf
-     
+
      better-defaults
      emacs-lisp
      git
@@ -83,100 +83,100 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
+                                      xclip
+                                      (use-package gruvbox-theme
+                                        :ensure nil
+                                        :config
+                                        (progn
+                                          (defvar after-load-theme-hook nil
+                                            "Hook run after a color theme is loaded using `load-theme'.")
+                                          (defadvice load-theme (after run-after-load-theme-hook activate)
+                                            "Run `after-load-theme-hook'."
+                                            (run-hooks 'after-load-theme-hook))
+                                          (defun customize-gruvbox ()
+                                            "Customize gruvbox theme"
+                                            (if (member 'gruvbox custom-enabled-themes)
+                                                (custom-theme-set-faces
+                                                 'gruvbox
+                                                 '(cursor                 ((t (:foreground "#928374"))))
+                                                 '(org-block              ((t (:foreground "#ebdbb2":background "#1c2021" :extend t))))
+                                                 '(org-block-begin-line   ((t (:inherit org-block :background "#1d2021" :foreground "#665c54" :extend t))))
+                                                 '(org-block-end-line     ((t (:inherit org-block-begin-line))))
+                                                 '(org-document-info      ((t (:foreground "#d5c4a1" :weight bold))))
+                                                 '(org-document-info-keyword    ((t (:inherit shadow))))
+                                                 '(org-document-title     ((t (:foreground "#fbf1c7" :weight bold :height 1.4))))
+                                                 '(org-meta-line          ((t (:inherit shadow))))
+                                                 '(org-target             ((t (:height 0.7 :inherit shadow))))
+                                                 '(org-link               ((t (:foreground "#b8bb26" :background "#32302f" :overline nil))))  ;;
+                                                 '(org-indent             ((t (:inherit org-hide))))
+                                                 '(org-indent             ((t (:inherit (org-hide fixed-pitch)))))
+                                                 '(org-footnote           ((t (:foreground "#8ec07c" :background "#32302f" :overline nil))))
+                                                 '(org-ref-cite-face      ((t (:foreground "#fabd2f" :background "#32302f" :overline nil))))  ;;
+                                                 '(org-ref-ref-face       ((t (:foreground "#83a598" :background "#32302f" :overline nil))))
+                                                 '(org-ref-label-face     ((t (:inherit shadow :box t))))
+                                                 '(org-drawer             ((t (:inherit shadow))))
+                                                 '(org-property-value     ((t (:inherit org-document-info))) t)
+                                                 '(org-tag                ((t (:inherit shadow))))
+                                                 '(org-date               ((t (:foreground "#83a598" :underline t))))
+                                                 '(org-verbatim           ((t (:inherit org-block :background "#3c3836" :foreground "#d5c4a1"))))
+                                                 '(org-code               ((t (:inherit org-verbatim :background "#3c3836" :foreground "#fe8019"))))
+                                                 '(org-quote              ((t (:inherit org-block :slant italic))))
+                                                 '(org-level-1            ((t (:foreground "#83a598" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Blue
+                                                 '(org-level-2            ((t (:foreground "#8ec07c" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Aqua
+                                                 '(org-level-3            ((t (:foreground "#b8bb26" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Green
+                                                 '(org-level-4            ((t (:foreground "#fabd2f" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Yellow
+                                                 '(org-level-5            ((t (:foreground "#fe8019" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Orange
+                                                 '(org-level-6            ((t (:foreground "#fb4934" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Red
+                                                 '(org-level-7            ((t (:foreground "#d3869b" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Blue
+                                                 '(org-headline-done      ((t (:foreground "#928374" :background "#282828" :weight bold :overline nil :extend t)))) ;; Gray
+                                                 '(org-ellipsis           ((t (:inherit shadow :height 1.0 :weight bold :extend t))))
+                                                 '(org-table              ((t (:foreground "#d5c4a1" :background "#3c3836"))))
 
-  (use-package gruvbox-theme
-    :ensure nil
-    :config
-    (progn
-      (defvar after-load-theme-hook nil
-        "Hook run after a color theme is loaded using `load-theme'.")
-      (defadvice load-theme (after run-after-load-theme-hook activate)
-        "Run `after-load-theme-hook'."
-        (run-hooks 'after-load-theme-hook))
-      (defun customize-gruvbox ()
-        "Customize gruvbox theme"
-        (if (member 'gruvbox custom-enabled-themes)
-            (custom-theme-set-faces
-             'gruvbox
-             '(cursor                 ((t (:foreground "#928374"))))
-             '(org-block              ((t (:foreground "#ebdbb2":background "#1c2021" :extend t))))
-             '(org-block-begin-line   ((t (:inherit org-block :background "#1d2021" :foreground "#665c54" :extend t))))
-             '(org-block-end-line     ((t (:inherit org-block-begin-line))))
-             '(org-document-info      ((t (:foreground "#d5c4a1" :weight bold))))
-             '(org-document-info-keyword    ((t (:inherit shadow))))
-             '(org-document-title     ((t (:foreground "#fbf1c7" :weight bold :height 1.4))))
-             '(org-meta-line          ((t (:inherit shadow))))
-             '(org-target             ((t (:height 0.7 :inherit shadow))))
-             '(org-link               ((t (:foreground "#b8bb26" :background "#32302f" :overline nil))))  ;; 
-             '(org-indent             ((t (:inherit org-hide))))
-             '(org-indent             ((t (:inherit (org-hide fixed-pitch)))))
-             '(org-footnote           ((t (:foreground "#8ec07c" :background "#32302f" :overline nil))))
-             '(org-ref-cite-face      ((t (:foreground "#fabd2f" :background "#32302f" :overline nil))))  ;; 
-             '(org-ref-ref-face       ((t (:foreground "#83a598" :background "#32302f" :overline nil))))
-             '(org-ref-label-face     ((t (:inherit shadow :box t))))
-             '(org-drawer             ((t (:inherit shadow))))
-             '(org-property-value     ((t (:inherit org-document-info))) t)
-             '(org-tag                ((t (:inherit shadow))))
-             '(org-date               ((t (:foreground "#83a598" :underline t))))
-             '(org-verbatim           ((t (:inherit org-block :background "#3c3836" :foreground "#d5c4a1"))))
-             '(org-code               ((t (:inherit org-verbatim :background "#3c3836" :foreground "#fe8019"))))
-             '(org-quote              ((t (:inherit org-block :slant italic))))
-             '(org-level-1            ((t (:foreground "#83a598" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Blue
-             '(org-level-2            ((t (:foreground "#8ec07c" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Aqua
-             '(org-level-3            ((t (:foreground "#b8bb26" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Green
-             '(org-level-4            ((t (:foreground "#fabd2f" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Yellow
-             '(org-level-5            ((t (:foreground "#fe8019" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Orange
-             '(org-level-6            ((t (:foreground "#fb4934" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Red
-             '(org-level-7            ((t (:foreground "#d3869b" :background "#282828" :weight bold :height 1.1 :overline nil :extend t)))) ;; Blue
-             '(org-headline-done      ((t (:foreground "#928374" :background "#282828" :weight bold :overline nil :extend t)))) ;; Gray
-             '(org-ellipsis           ((t (:inherit shadow :height 1.0 :weight bold :extend t)))) 
-             '(org-table              ((t (:foreground "#d5c4a1" :background "#3c3836"))))
+                                                 ;; Doom-modeline settings
+                                                 '(doom-modeline-evil-insert-state   ((t (:foreground "#b8bb26" :weight bold)))) ;; Green
+                                                 '(doom-modeline-evil-emacs-state    ((t (:foreground "#b16286" :weight bold)))) ;; Purple
+                                                 '(doom-modeline-evil-normal-state   ((t (:foreground "#83a598" :weight bold)))) ;; Blue
+                                                 '(doom-modeline-evil-visual-state   ((t (:foreground "#fbf1c7" :weight bold)))) ;; Beige
+                                                 '(doom-modeline-evil-replace-state  ((t (:foreground "#fb4934" :weight bold)))) ;; Red
+                                                 '(doom-modeline-evil-operator-state ((t (:foreground "#fabd2f" :weight bold)))) ;; Yellow
+                                                 '(mode-line                         ((t (:background "#504945" :foreground "#d5c4a1"))))
+                                                 '(mode-line-inactive                ((t (:background "#3c3836" :foreground "#7c6f64"))))
+                                                 '(link                              ((t (:foreground "#b8bb26" :overline t))))
 
-             ;; Doom-modeline settings
-             '(doom-modeline-evil-insert-state   ((t (:foreground "#b8bb26" :weight bold)))) ;; Green
-             '(doom-modeline-evil-emacs-state    ((t (:foreground "#b16286" :weight bold)))) ;; Purple
-             '(doom-modeline-evil-normal-state   ((t (:foreground "#83a598" :weight bold)))) ;; Blue
-             '(doom-modeline-evil-visual-state   ((t (:foreground "#fbf1c7" :weight bold)))) ;; Beige
-             '(doom-modeline-evil-replace-state  ((t (:foreground "#fb4934" :weight bold)))) ;; Red
-             '(doom-modeline-evil-operator-state ((t (:foreground "#fabd2f" :weight bold)))) ;; Yellow
-             '(mode-line                         ((t (:background "#504945" :foreground "#d5c4a1"))))
-             '(mode-line-inactive                ((t (:background "#3c3836" :foreground "#7c6f64"))))
-             '(link                              ((t (:foreground "#b8bb26" :overline t))))
-
-             '(line-number                       ((t (:background "#32302f" :foreground "#665c54"))))
-             ;; Mu4E mail client faces
-             '(mu4e-header-face                  ((t (:foreground "#d5c4a1" :background "#282828"))))
-             '(mu4e-replied-face                 ((t (:inherit mu4e-header-face :foreground "#b8bb26"))))
-             '(mu4e-draft-face                   ((t (:inherit mu4e-header-face :foreground "#fabd2f"))))
-             '(mu4e-link-face                    ((t (:inherit mu4e-face :foreground "#8ec07c" :underline t))))
-             '(mu4e-forwarded-face               ((t (:inherit mu4e-header-face :foreground "#80c07c"))))
-             '(mu4e-flagged-face                 ((t (:inherit mu4e-header-face))))
-             '(mu4e-header-highlight-face        ((t (:underline nil :background "#3c3836"))))
-             '(mu4e-unread-face                  ((t (:foreground "#fbf1c7" :weight bold))))  ;; Originally #83a598 
-             '(mu4e-cited-1-face                 ((t (:foreground "#458588" :slant italic))))
-             '(mu4e-cited-2-face                 ((t (:foreground "#689d6a" :slant italic))))
-             '(mu4e-cited-3-face                 ((t (:foreground "#98971a" :slant italic))))
-             '(mu4e-cited-4-face                 ((t (:foreground "#d79921" :slant italic))))
-             '(mu4e-cited-5-face                 ((t (:foreground "#d65d0e" :slant italic))))
-             '(mu4e-cited-6-face                 ((t (:foreground "#cc241d" :slant italic))))
-             '(mu4e-cited-7-face                 ((t (:foreground "#b16286" :slant italic))))
-             '(mu4e-cited-8-face                 ((t (:foreground "#458588" :slant italic))))
-             '(mu4e-cited-9-face                 ((t (:foreground "#689d6a" :slant italic))))
-             '(mu4e-cited-10-face                 ((t (:foreground "#98971a" :slant italic))))
-             '(mu4e-cited-11-face                 ((t (:foreground "#d79921" :slant italic))))
-             '(mu4e-cited-12-face                 ((t (:foreground "#d65d0e" :slant italic))))
-             '(mu4e-cited-13-face                 ((t (:foreground "#cc241d" :slant italic))))
-             '(mu4e-cited-14-face                 ((t (:foreground "#b16286" :slant italic))))
-             '(pdf-view-midnight-colors           '("#d5c4a1" . "#282828"))
-             )
-            (setq org-n-level-faces 8)
-          ) ;; test
-        )  
-      (add-hook 'after-load-theme-hook 'customize-gruvbox)
-      )
-      (load-theme 'gruvbox t) 
-      (enable-theme 'gruvbox)
-    )
+                                                 '(line-number                       ((t (:background "#32302f" :foreground "#665c54"))))
+                                                 ;; Mu4E mail client faces
+                                                 '(mu4e-header-face                  ((t (:foreground "#d5c4a1" :background "#282828"))))
+                                                 '(mu4e-replied-face                 ((t (:inherit mu4e-header-face :foreground "#b8bb26"))))
+                                                 '(mu4e-draft-face                   ((t (:inherit mu4e-header-face :foreground "#fabd2f"))))
+                                                 '(mu4e-link-face                    ((t (:inherit mu4e-face :foreground "#8ec07c" :underline t))))
+                                                 '(mu4e-forwarded-face               ((t (:inherit mu4e-header-face :foreground "#80c07c"))))
+                                                 '(mu4e-flagged-face                 ((t (:inherit mu4e-header-face))))
+                                                 '(mu4e-header-highlight-face        ((t (:underline nil :background "#3c3836"))))
+                                                 '(mu4e-unread-face                  ((t (:foreground "#fbf1c7" :weight bold))))  ;; Originally #83a598
+                                                 '(mu4e-cited-1-face                 ((t (:foreground "#458588" :slant italic))))
+                                                 '(mu4e-cited-2-face                 ((t (:foreground "#689d6a" :slant italic))))
+                                                 '(mu4e-cited-3-face                 ((t (:foreground "#98971a" :slant italic))))
+                                                 '(mu4e-cited-4-face                 ((t (:foreground "#d79921" :slant italic))))
+                                                 '(mu4e-cited-5-face                 ((t (:foreground "#d65d0e" :slant italic))))
+                                                 '(mu4e-cited-6-face                 ((t (:foreground "#cc241d" :slant italic))))
+                                                 '(mu4e-cited-7-face                 ((t (:foreground "#b16286" :slant italic))))
+                                                 '(mu4e-cited-8-face                 ((t (:foreground "#458588" :slant italic))))
+                                                 '(mu4e-cited-9-face                 ((t (:foreground "#689d6a" :slant italic))))
+                                                 '(mu4e-cited-10-face                 ((t (:foreground "#98971a" :slant italic))))
+                                                 '(mu4e-cited-11-face                 ((t (:foreground "#d79921" :slant italic))))
+                                                 '(mu4e-cited-12-face                 ((t (:foreground "#d65d0e" :slant italic))))
+                                                 '(mu4e-cited-13-face                 ((t (:foreground "#cc241d" :slant italic))))
+                                                 '(mu4e-cited-14-face                 ((t (:foreground "#b16286" :slant italic))))
+                                                 '(pdf-view-midnight-colors           '("#d5c4a1" . "#282828"))
+                                                 )
+                                              (setq org-n-level-faces 8)
+                                              ) ;; test
+                                            )
+                                          (add-hook 'after-load-theme-hook 'customize-gruvbox)
+                                          )
+                                        (load-theme 'gruvbox t)
+                                        (enable-theme 'gruvbox)
+                                        )
 
                                       )
    ;; A list of packages that cannot be updated.
@@ -193,8 +193,8 @@ This function should only modify configuration layer settings."
    ;; installs *all* packages supported by Spacemacs and never uninstalls them.
    ;; (default is `used-only')
    dotspacemacs-install-packages 'used-only)
-   dotspacemacs-configuration-layers
-   '((org :variables
+  dotspacemacs-configuration-layers
+  '((org :variables
          org-enable-hugo-support t))
   )
 
@@ -210,9 +210,9 @@ This function should only modify configuration layer settings."
   (setq org-latex-minted-options '(("breaklines" "true")
                                    ;;("fontsize" "\\scriptsize")
                                    ("frame" "lines")
-                                     ("linenos" "")
-                                     ("numbers" "left")
-                                     ("numberstyle" "\\tiny")
+                                   ("linenos" "")
+                                   ("numbers" "left")
+                                   ("numberstyle" "\\tiny")
                                    ("breakanywhere" "true")))
   "Initialization:
 This function is called at the very beginning of Spacemacs startup,
@@ -220,7 +220,7 @@ before layer configuration.
 It should only modify the values of Spacemacs settings."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
-  (setq compile-command "bash do")
+  (setq compile-command "uv run main.py")
   (setq-default
    ;; If non-nil then enable support for the portable dumper. You'll need to
    ;; compile Emacs 27 from source following the instructions in file
@@ -683,7 +683,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
-)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -693,7 +693,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (yas-global-mode 1)
 
-)
+  )
 
 
 (defun dotspacemacs/user-load ()
@@ -701,7 +701,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-)
+  (require 'pet)
+  (add-hook 'python-base-mode-hook 'pet-mode -10)
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -710,11 +712,10 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (xclip-mode 1)
   (setq split-height-threshold 0)
   (setq split-width-threshold 120)
-
-
-)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -724,18 +725,99 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(csv-mode pandoc-mode ligature unicode-fonts ucs-utils font-utils persistent-soft pcache afternoon-theme alect-themes ample-theme ample-zen-theme anti-zenburn-theme apropospriate-theme badwolf-theme birds-of-paradise-plus-theme bubbleberry-theme busybee-theme cherry-blossom-theme chocolate-theme clues-theme color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow cyberpunk-theme dakrone-theme darkmine-theme darkokai-theme darktooth-theme django-theme doom-themes dracula-theme espresso-theme exotica-theme eziam-themes flatland-theme flatui-theme gandalf-theme gotham-theme grandshell-theme gruber-darker-theme hc-zenburn-theme hemisu-theme heroku-theme inkpot-theme ir-black-theme jazz-theme jbeans-theme kaolin-themes light-soap-theme lush-theme madhat2r-theme material-theme minimal-theme modus-themes moe-theme molokai-theme monochrome-theme monokai-theme mustang-theme naquadah-theme noctilux-theme obsidian-theme occidental-theme oldlace-theme omtose-phellack-theme organic-green-theme phoenix-dark-mono-theme phoenix-dark-pink-theme planet-theme professional-theme purple-haze-theme railscasts-theme rebecca-theme reverse-theme seti-theme smyx-theme soft-charcoal-theme soft-morning-theme soft-stone-theme solarized-theme soothe-theme spacegray-theme subatomic-theme subatomic256-theme sublime-themes sunny-day-theme tango-2-theme tango-plus-theme tao-theme toxi-theme twilight-anti-bright-theme twilight-bright-theme twilight-theme ujelly-theme underwater-theme white-sand-theme zen-and-art-theme zenburn-theme zonokai-emacs all-the-icons-gnus base16-theme gruvbox-theme autothemer tangotango-theme farmhouse-themes company-statistics evil-vimish-fold vimish-fold auctex-latexmk company-auctex evil-tex company-math company-reftex auctex math-symbol-lists ccls company-c-headers company-rtags company-ycmd cpp-auto-include dap-mode lsp-docker bui disaster flycheck-rtags flycheck-ycmd gendoxy google-c-style helm-lsp helm-rtags lsp-origami origami lsp-pyright lsp-python-ms lsp-treemacs lsp-ui lsp-mode rtags ycmd request-deferred pdf-view-restore pdf-tools tablist helm-bibtex org-ref ox-pandoc citeproc bibtex-completion biblio biblio-core parsebib ace-jump-helm-line ace-link aggressive-indent auto-compile auto-highlight-symbol centered-cursor-mode clean-aindent-mode column-enforce-mode define-word devdocs dired-quick-sort drag-stuff dumb-jump editorconfig elisp-def elisp-slime-nav emr clang-format list-utils eval-sexp-fu evil-anzu anzu evil-args evil-cleverparens paredit evil-collection annalist evil-easymotion evil-escape evil-exchange evil-goggles evil-iedit-state iedit evil-indent-plus evil-lion evil-lisp-state evil-matchit evil-mc evil-nerd-commenter evil-numbers evil-surround evil-textobj-line evil-tutor evil-unimpaired evil-visual-mark-mode evil-visualstar expand-region eyebrowse fancy-battery flx-ido flx flycheck-elsa flycheck-package package-lint flycheck golden-ratio google-translate helm-ag helm-descbinds helm-make helm-mode-manager helm-org helm-projectile helm-purpose helm-swoop helm-themes helm-xref helm helm-core help-fns+ hide-comnt highlight-indentation highlight-numbers parent-mode highlight-parentheses hl-todo compat hungry-delete indent-guide info+ inspector link-hint lorem-ipsum macrostep multi-line shut-up nameless open-junk-file org-superstar overseer f pkg-info epl paradox spinner password-generator popup popwin quickrun rainbow-delimiters request restart-emacs smartparens space-doc spaceline-all-the-icons memoize spaceline all-the-icons powerline spacemacs-purpose-popwin spacemacs-whitespace-cleanup string-edit-at-point string-inflection symbol-overlay symon term-cursor toc-org treemacs-evil treemacs-icons-dired treemacs-persp persp-mode treemacs-projectile treemacs projectile cfrs ht pfuture ace-window avy posframe s undo-tree queue uuidgen vi-tilde-fringe vim-powerline volatile-highlights window-purpose imenu-list winum dash writeroom-mode visual-fill-column ws-butler async bind-map diminish dotenv-mode evil-evilified-state font-lock+ holy-mode hybrid-mode evil goto-chg hydra lv pcre2el use-package bind-key which-key))
- '(warning-suppress-log-types '((comp))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(package-selected-packages
+     '(ace-jump-helm-line ace-link ace-window afternoon-theme aggressive-indent
+                          alect-themes all-the-icons all-the-icons-gnus
+                          ample-theme ample-zen-theme annalist anti-zenburn-theme
+                          anzu apropospriate-theme async auctex auctex-latexmk
+                          auto-compile auto-highlight-symbol autothemer avy
+                          badwolf-theme base16-theme biblio biblio-core
+                          bibtex-completion bind-key bind-map
+                          birds-of-paradise-plus-theme bubbleberry-theme bui
+                          busybee-theme ccls centered-cursor-mode cfrs
+                          cherry-blossom-theme chocolate-theme citeproc
+                          clang-format clean-aindent-mode clues-theme
+                          color-theme-sanityinc-solarized
+                          color-theme-sanityinc-tomorrow column-enforce-mode
+                          company-auctex company-c-headers company-math
+                          company-reftex company-rtags company-statistics
+                          company-ycmd compat cpp-auto-include csv-mode
+                          cyberpunk-theme dakrone-theme dap-mode darkmine-theme
+                          darkokai-theme darktooth-theme dash define-word devdocs
+                          diminish dired-quick-sort disaster django-theme
+                          doom-themes dotenv-mode dracula-theme drag-stuff
+                          dumb-jump editorconfig elisp-def elisp-slime-nav emr epl
+                          espresso-theme eval-sexp-fu evil evil-anzu evil-args
+                          evil-cleverparens evil-collection evil-easymotion
+                          evil-escape evil-evilified-state evil-exchange
+                          evil-goggles evil-iedit-state evil-indent-plus evil-lion
+                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
+                          evil-numbers evil-surround evil-tex evil-textobj-line
+                          evil-tutor evil-unimpaired evil-vimish-fold
+                          evil-visual-mark-mode evil-visualstar exotica-theme
+                          expand-region eyebrowse eziam-themes f fancy-battery
+                          farmhouse-themes flatland-theme flatui-theme flx flx-ido
+                          flycheck flycheck-elsa flycheck-package flycheck-rtags
+                          flycheck-ycmd font-lock+ font-utils gandalf-theme
+                          gendoxy golden-ratio google-c-style google-translate
+                          gotham-theme goto-chg grandshell-theme
+                          gruber-darker-theme gruvbox-theme hc-zenburn-theme helm
+                          helm-ag helm-bibtex helm-core helm-descbinds helm-lsp
+                          helm-make helm-mode-manager helm-org helm-projectile
+                          helm-purpose helm-rtags helm-swoop helm-themes helm-xref
+                          help-fns+ hemisu-theme heroku-theme hide-comnt
+                          highlight-indentation highlight-numbers
+                          highlight-parentheses hl-todo holy-mode ht hungry-delete
+                          hybrid-mode hydra iedit imenu-list indent-guide info+
+                          inkpot-theme inspector ir-black-theme jazz-theme
+                          jbeans-theme kaolin-themes ligature light-soap-theme
+                          link-hint list-utils lorem-ipsum lsp-docker lsp-mode
+                          lsp-origami lsp-pyright lsp-python-ms lsp-treemacs
+                          lsp-ui lush-theme lv macrostep madhat2r-theme
+                          material-theme math-symbol-lists memoize minimal-theme
+                          modus-themes moe-theme molokai-theme monochrome-theme
+                          monokai-theme multi-line mustang-theme nameless
+                          naquadah-theme noctilux-theme obsidian-theme
+                          occidental-theme oldlace-theme omtose-phellack-theme
+                          open-junk-file org-ref org-superstar organic-green-theme
+                          origami overseer ox-pandoc package-lint pandoc-mode
+                          paradox paredit parent-mode parsebib password-generator
+                          pcache pcre2el pdf-tools pdf-view-restore
+                          persistent-soft persp-mode pfuture
+                          phoenix-dark-mono-theme phoenix-dark-pink-theme pkg-info
+                          planet-theme popup popwin posframe powerline
+                          professional-theme projectile purple-haze-theme queue
+                          quickrun railscasts-theme rainbow-delimiters
+                          rebecca-theme request request-deferred restart-emacs
+                          reverse-theme rtags s seti-theme shut-up smartparens
+                          smyx-theme soft-charcoal-theme soft-morning-theme
+                          soft-stone-theme solarized-theme soothe-theme space-doc
+                          spacegray-theme spaceline spaceline-all-the-icons
+                          spacemacs-purpose-popwin spacemacs-whitespace-cleanup
+                          spinner string-edit-at-point string-inflection
+                          subatomic-theme subatomic256-theme sublime-themes
+                          sunny-day-theme symbol-overlay symon tablist
+                          tango-2-theme tango-plus-theme tangotango-theme
+                          tao-theme term-cursor toc-org toxi-theme treemacs
+                          treemacs-evil treemacs-icons-dired treemacs-persp
+                          treemacs-projectile twilight-anti-bright-theme
+                          twilight-bright-theme twilight-theme ucs-utils
+                          ujelly-theme underwater-theme undo-tree unicode-fonts
+                          use-package uuidgen vi-tilde-fringe vim-powerline
+                          vimish-fold visual-fill-column volatile-highlights
+                          which-key white-sand-theme window-purpose winum
+                          writeroom-mode ws-butler xclip ycmd zen-and-art-theme
+                          zenburn-theme zonokai-emacs))
+   '(warning-suppress-log-types '((comp))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )
